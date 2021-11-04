@@ -39,7 +39,11 @@
             "type": "String"
         }
     },
-    "variables": {},
+    "variables": {
+        "name" : "backendsrv2",
+        "nic":"backnic",
+        "pip":"backpip"
+    },
     "resources": [
         {
             "type": "Microsoft.Network/networkSecurityGroups",
