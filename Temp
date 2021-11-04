@@ -196,6 +196,26 @@
         {
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2019-07-01",
+            "name": "[variables('pip')]",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "BeardSite": "[resourceGroup().location]"
+            },
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "properties": {
+                "ipAddress": "",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2019-07-01",
             "name": "[parameters('publicIPAddresses_frontendSERVER_ip_name')]",
             "location": "[resourceGroup().location]",
             "tags": {
@@ -478,7 +498,7 @@
                     {
                         "name": "ipconfig1",
                         "properties": {
-                            "privateIPAddress": "",
+                            "privateIPAddress": "10.0.4.4",
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('pip'))]"
