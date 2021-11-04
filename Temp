@@ -434,7 +434,7 @@
             },
                 "type": "Microsoft.Network/networkInterfaces",
                 "apiVersion": "2019-07-01",
-                "name": "[variabes('nic')]",
+                "name": "[variables('nic')]",
                 "location": "[resourceGroup().location]",
                 "dependsOn": [
                     "[resourceId('Microsoft.Network/publicIPAddresses', variables('pip'))]",
