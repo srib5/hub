@@ -300,10 +300,10 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2019-03-01",
-            "name": "[variables('name')]",
+            "name": "[variables('backendsrv2')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkInterfaces', variables('nic'))]"
+                "[resourceId('Microsoft.Network/networkInterfaces', variables('backnic'))]"
             ],
             "tags": {
                 "BeardSite": "[resourceGroup().location]"
@@ -321,7 +321,7 @@
                     },
                     "osDisk": {
                         "osType": "Windows",
-                        "name": "[concat(variables('name'), '_OsDisk_1_ef3ab3c577ea4dd5827852baae056008')]",
+                        "name": "[concat(variables('backendsrv2'), '_OsDisk_1_ef3ab3c577ea4dd5827852baae056008')]",
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
@@ -332,7 +332,7 @@
                     "dataDisks": []
                 },
                 "osProfile": {
-                    "computerName": "[variables('name')]",
+                    "computerName": "[variables('backendsrv2')]",
                     "adminUsername": "beardmin",
                     "adminPassword": "mM%Vc!562yTj",
                     "windowsConfiguration": {
@@ -434,10 +434,10 @@
             },
                 "type": "Microsoft.Network/networkInterfaces",
                 "apiVersion": "2019-07-01",
-                "name": "[variabes('nic')]",
+                "name": "[variabes('backnic')]",
                 "location": "[resourceGroup().location]",
                 "dependsOn": [
-                    "[resourceId('Microsoft.Network/publicIPAddresses', variables('pip'))]",
+                    "[resourceId('Microsoft.Network/publicIPAddresses', variables('backpip'))]",
                     "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_BeardSite_vnet_name'), 'default')]",
                     "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_backendSERVER_nsg_name'))]"
                 ],
